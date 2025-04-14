@@ -1,0 +1,1672 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "NinjaAPI",
+      "version": "1.0.0",
+      "description": ""
+    },
+    "paths": {
+      "/clients/bulk": {
+        "post": {
+          "operationId": "clients_api_create_or_update_clients",
+          "summary": "Create Or Update Clients",
+          "parameters": [],
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/ClientOut"
+                    },
+                    "title": "Response",
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ValidationError"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Clients"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ClientIn"
+                  },
+                  "title": "Payload",
+                  "type": "array"
+                }
+              }
+            },
+            "required": true
+          }
+        }
+      },
+      "/clients/{client_id}": {
+        "get": {
+          "operationId": "clients_api_get_client",
+          "summary": "Get Client",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "client_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Client Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ClientOut"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Clients"
+          ]
+        }
+      },
+      "/advertisers/bulk": {
+        "post": {
+          "operationId": "advertisers_api_create_or_update_advertiser",
+          "summary": "Create Or Update Advertiser",
+          "parameters": [],
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/AdvertiserOut"
+                    },
+                    "title": "Response",
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ValidationError"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Advertisers"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AdvertiserIn"
+                  },
+                  "title": "Payload",
+                  "type": "array"
+                }
+              }
+            },
+            "required": true
+          }
+        }
+      },
+      "/advertisers/{advertiser_id}": {
+        "get": {
+          "operationId": "advertisers_api_get_advertiser",
+          "summary": "Get Advertiser",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdvertiserOut"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Advertisers"
+          ]
+        }
+      },
+      "/advertisers/{advertiser_id}/campaigns": {
+        "post": {
+          "operationId": "advertisers_api_create_campaign",
+          "summary": "Create Campaign",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CampaignOut"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ValidationError"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Campaigns"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignIn"
+                }
+              }
+            },
+            "required": true
+          }
+        },
+        "get": {
+          "operationId": "advertisers_api_get_campaigns",
+          "summary": "Get Campaigns",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "in": "query",
+              "name": "size",
+              "schema": {
+                "default": 10,
+                "exclusiveMinimum": 0,
+                "title": "Size",
+                "type": "integer"
+              },
+              "required": false
+            },
+            {
+              "in": "query",
+              "name": "page",
+              "schema": {
+                "default": 1,
+                "exclusiveMinimum": 0,
+                "title": "Page",
+                "type": "integer"
+              },
+              "required": false
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/CampaignOut"
+                    },
+                    "title": "Response",
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Campaigns"
+          ]
+        }
+      },
+      "/advertisers/{advertiser_id}/campaigns/generation": {
+        "post": {
+          "operationId": "advertisers_api_generate_campaign_text",
+          "summary": "Generate Campaign Text",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CampaignGenerationOut"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Campaigns"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignGenerationIn"
+                }
+              }
+            },
+            "required": true
+          }
+        }
+      },
+      "/advertisers/{advertiser_id}/campaigns/{campaign_id}": {
+        "get": {
+          "operationId": "advertisers_api_get_campaign",
+          "summary": "Get Campaign",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "in": "path",
+              "name": "campaign_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Campaign Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CampaignOut"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Campaigns"
+          ]
+        },
+        "put": {
+          "operationId": "advertisers_api_update_campaign",
+          "summary": "Update Campaign",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "in": "path",
+              "name": "campaign_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Campaign Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CampaignOut"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ValidationError"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Campaigns"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignIn"
+                }
+              }
+            },
+            "required": true
+          }
+        },
+        "delete": {
+          "operationId": "advertisers_api_delete_campaign",
+          "summary": "Delete Campaign",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "in": "path",
+              "name": "campaign_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Campaign Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "title": "Response",
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Campaigns"
+          ]
+        }
+      },
+      "/advertisers/{advertiser_id}/campaigns/{campaign_id}/upload": {
+        "post": {
+          "operationId": "advertisers_api_upload_campaign_image",
+          "summary": "Upload Campaign Image",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "in": "path",
+              "name": "campaign_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Campaign Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CampaignOut"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ValidationError"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Campaigns"
+          ],
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "properties": {
+                    "image": {
+                      "format": "binary",
+                      "title": "Image",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "image"
+                  ],
+                  "title": "FileParams",
+                  "type": "object"
+                }
+              }
+            },
+            "required": true
+          }
+        }
+      },
+      "/moderation/enable": {
+        "post": {
+          "operationId": "ai_tools_api_enable",
+          "summary": "Enable",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "tags": [
+            "Moderation"
+          ]
+        }
+      },
+      "/moderation/disable": {
+        "post": {
+          "operationId": "ai_tools_api_disable",
+          "summary": "Disable",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "tags": [
+            "Moderation"
+          ]
+        }
+      },
+      "/moderation": {
+        "get": {
+          "operationId": "ai_tools_api_get_moderation_status",
+          "summary": "Get Moderation Status",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "tags": [
+            "Moderation"
+          ]
+        }
+      },
+      "/ml-scores": {
+        "post": {
+          "operationId": "score_api_create_or_update_score",
+          "summary": "Create Or Update Score",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MLScoreOut"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ValidationError"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Advertisers"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MLScoreIn"
+                }
+              }
+            },
+            "required": true
+          }
+        }
+      },
+      "/ads": {
+        "get": {
+          "operationId": "ads_api_get_ads",
+          "summary": "Get Ads",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "client_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Client Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdsOut"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Ads"
+          ]
+        }
+      },
+      "/ads/{ad_id}/click": {
+        "post": {
+          "operationId": "ads_api_click",
+          "summary": "Click",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "ad_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Ad Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ValidationError"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Forbidden",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ForbiddenError"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Ads"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdsClickIn"
+                }
+              }
+            },
+            "required": true
+          }
+        }
+      },
+      "/stats/campaigns/{campaign_id}": {
+        "get": {
+          "operationId": "stats_api_get_campaign_stat",
+          "summary": "Get Campaign Stat",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "campaign_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Campaign Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CampaignStat"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Statistics"
+          ]
+        }
+      },
+      "/stats/advertisers/{advertiser_id}/campaigns": {
+        "get": {
+          "operationId": "stats_api_get_advertiser_stat",
+          "summary": "Get Advertiser Stat",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdvertiserCampaignStat"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Statistics"
+          ]
+        }
+      },
+      "/stats/campaigns/{campaign_id}/daily": {
+        "get": {
+          "operationId": "stats_api_get_campaign_stat_daily",
+          "summary": "Get Campaign Stat Daily",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "campaign_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Campaign Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/CampaignStatDaily"
+                    },
+                    "title": "Response",
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Statistics"
+          ]
+        }
+      },
+      "/stats/advertisers/{advertiser_id}/campaigns/daily": {
+        "get": {
+          "operationId": "stats_api_get_advertiser_stat_daily",
+          "summary": "Get Advertiser Stat Daily",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "advertiser_id",
+              "schema": {
+                "format": "uuid",
+                "title": "Advertiser Id",
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/CampaignStatDaily"
+                    },
+                    "title": "Response",
+                    "type": "array"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Statistics"
+          ]
+        }
+      },
+      "/time/advance": {
+        "post": {
+          "operationId": "time_emulation_api_set_data",
+          "summary": "Set Data",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CurrentDay"
+                  }
+                }
+              }
+            }
+          },
+          "tags": [
+            "Time"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentDay"
+                }
+              }
+            },
+            "required": true
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "ClientOut": {
+          "properties": {
+            "client_id": {
+              "format": "uuid",
+              "title": "Client Id",
+              "type": "string"
+            },
+            "login": {
+              "title": "Login",
+              "type": "string"
+            },
+            "age": {
+              "title": "Age",
+              "type": "integer"
+            },
+            "location": {
+              "title": "Location",
+              "type": "string"
+            },
+            "gender": {
+              "title": "Gender",
+              "type": "string"
+            }
+          },
+          "required": [
+            "client_id",
+            "login",
+            "age",
+            "location",
+            "gender"
+          ],
+          "title": "ClientOut",
+          "type": "object"
+        },
+        "ValidationError": {
+          "properties": {
+            "message": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object"
+                },
+                {
+                  "items": {
+  
+                  },
+                  "type": "array"
+                }
+              ],
+              "default": "Ошибка в данных запроса.",
+              "title": "Message"
+            }
+          },
+          "title": "ValidationError",
+          "type": "object"
+        },
+        "NotFoundError": {
+          "properties": {
+            "message": {
+              "default": "Объект не найден",
+              "title": "Message",
+              "type": "string"
+            }
+          },
+          "title": "NotFoundError",
+          "type": "object"
+        },
+        "ClientIn": {
+          "properties": {
+            "client_id": {
+              "format": "uuid",
+              "title": "Client Id",
+              "type": "string"
+            },
+            "login": {
+              "title": "Login",
+              "type": "string"
+            },
+            "age": {
+              "title": "Age",
+              "type": "integer"
+            },
+            "location": {
+              "title": "Location",
+              "type": "string"
+            },
+            "gender": {
+              "title": "Gender",
+              "type": "string"
+            }
+          },
+          "required": [
+            "client_id",
+            "login",
+            "age",
+            "location",
+            "gender"
+          ],
+          "title": "ClientIn",
+          "type": "object"
+        },
+        "AdvertiserOut": {
+          "properties": {
+            "advertiser_id": {
+              "format": "uuid",
+              "title": "Advertiser Id",
+              "type": "string"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            }
+          },
+          "required": [
+            "advertiser_id",
+            "name"
+          ],
+          "title": "AdvertiserOut",
+          "type": "object"
+        },
+        "AdvertiserIn": {
+          "properties": {
+            "advertiser_id": {
+              "format": "uuid",
+              "title": "Advertiser Id",
+              "type": "string"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            }
+          },
+          "required": [
+            "advertiser_id",
+            "name"
+          ],
+          "title": "AdvertiserIn",
+          "type": "object"
+        },
+        "CampaignOut": {
+          "properties": {
+            "campaign_id": {
+              "format": "uuid",
+              "title": "Campaign Id",
+              "type": "string"
+            },
+            "advertiser_id": {
+              "format": "uuid",
+              "title": "Advertiser Id",
+              "type": "string"
+            },
+            "targeting": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Targeting"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "impressions_limit": {
+              "title": "Impressions Limit",
+              "type": "integer"
+            },
+            "clicks_limit": {
+              "title": "Clicks Limit",
+              "type": "integer"
+            },
+            "cost_per_impression": {
+              "title": "Cost Per Impression",
+              "type": "number"
+            },
+            "cost_per_click": {
+              "title": "Cost Per Click",
+              "type": "number"
+            },
+            "ad_title": {
+              "title": "Ad Title",
+              "type": "string"
+            },
+            "ad_text": {
+              "title": "Ad Text",
+              "type": "string"
+            },
+            "start_date": {
+              "title": "Start Date",
+              "type": "integer"
+            },
+            "end_date": {
+              "title": "End Date",
+              "type": "integer"
+            },
+            "image": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Image"
+            }
+          },
+          "required": [
+            "campaign_id",
+            "advertiser_id",
+            "impressions_limit",
+            "clicks_limit",
+            "cost_per_impression",
+            "cost_per_click",
+            "ad_title",
+            "ad_text",
+            "start_date",
+            "end_date"
+          ],
+          "title": "CampaignOut",
+          "type": "object"
+        },
+        "Targeting": {
+          "properties": {
+            "gender": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Gender"
+            },
+            "age_from": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Age From"
+            },
+            "age_to": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Age To"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Location"
+            }
+          },
+          "title": "Targeting",
+          "type": "object"
+        },
+        "CampaignIn": {
+          "properties": {
+            "targeting": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Targeting"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "impressions_limit": {
+              "title": "Impressions Limit",
+              "type": "integer"
+            },
+            "clicks_limit": {
+              "title": "Clicks Limit",
+              "type": "integer"
+            },
+            "cost_per_impression": {
+              "title": "Cost Per Impression",
+              "type": "number"
+            },
+            "cost_per_click": {
+              "title": "Cost Per Click",
+              "type": "number"
+            },
+            "ad_title": {
+              "title": "Ad Title",
+              "type": "string"
+            },
+            "ad_text": {
+              "title": "Ad Text",
+              "type": "string"
+            },
+            "start_date": {
+              "title": "Start Date",
+              "type": "integer"
+            },
+            "end_date": {
+              "title": "End Date",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "impressions_limit",
+            "clicks_limit",
+            "cost_per_impression",
+            "cost_per_click",
+            "ad_title",
+            "ad_text",
+            "start_date",
+            "end_date"
+          ],
+          "title": "CampaignIn",
+          "type": "object"
+        },
+        "CampaignPadination": {
+          "properties": {
+            "size": {
+              "default": 10,
+              "exclusiveMinimum": 0,
+              "title": "Size",
+              "type": "integer"
+            },
+            "page": {
+              "default": 1,
+              "exclusiveMinimum": 0,
+              "title": "Page",
+              "type": "integer"
+            }
+          },
+          "title": "CampaignPadination",
+          "type": "object"
+        },
+        "CampaignGenerationOut": {
+          "properties": {
+            "text": {
+              "title": "Text",
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "title": "CampaignGenerationOut",
+          "type": "object"
+        },
+        "CampaignGenerationIn": {
+          "properties": {
+            "product_name": {
+              "title": "Product Name",
+              "type": "string"
+            },
+            "target_action": {
+              "title": "Target Action",
+              "type": "string"
+            },
+            "target_audience": {
+              "title": "Target Audience",
+              "type": "string"
+            }
+          },
+          "required": [
+            "product_name",
+            "target_action",
+            "target_audience"
+          ],
+          "title": "CampaignGenerationIn",
+          "type": "object"
+        },
+        "MLScoreOut": {
+          "properties": {
+            "advertiser_id": {
+              "format": "uuid",
+              "title": "Advertiser Id",
+              "type": "string"
+            },
+            "client_id": {
+              "format": "uuid",
+              "title": "Client Id",
+              "type": "string"
+            },
+            "score": {
+              "default": 0,
+              "title": "Score",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "advertiser_id",
+            "client_id"
+          ],
+          "title": "MLScoreOut",
+          "type": "object"
+        },
+        "MLScoreIn": {
+          "properties": {
+            "advertiser_id": {
+              "format": "uuid",
+              "title": "Advertiser Id",
+              "type": "string"
+            },
+            "client_id": {
+              "format": "uuid",
+              "title": "Client Id",
+              "type": "string"
+            },
+            "score": {
+              "default": 0,
+              "title": "Score",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "advertiser_id",
+            "client_id"
+          ],
+          "title": "MLScoreIn",
+          "type": "object"
+        },
+        "AdsOut": {
+          "properties": {
+            "ad_id": {
+              "format": "uuid",
+              "title": "Ad Id",
+              "type": "string"
+            },
+            "advertiser_id": {
+              "format": "uuid",
+              "title": "Advertiser Id",
+              "type": "string"
+            },
+            "ad_title": {
+              "title": "Ad Title",
+              "type": "string"
+            },
+            "ad_text": {
+              "title": "Ad Text",
+              "type": "string"
+            }
+          },
+          "required": [
+            "ad_id",
+            "advertiser_id",
+            "ad_title",
+            "ad_text"
+          ],
+          "title": "AdsOut",
+          "type": "object"
+        },
+        "ForbiddenError": {
+          "properties": {
+            "message": {
+              "default": "Запрещено",
+              "title": "Message",
+              "type": "string"
+            }
+          },
+          "title": "ForbiddenError",
+          "type": "object"
+        },
+        "AdsClickIn": {
+          "properties": {
+            "client_id": {
+              "format": "uuid",
+              "title": "Client Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "client_id"
+          ],
+          "title": "AdsClickIn",
+          "type": "object"
+        },
+        "CampaignStat": {
+          "properties": {
+            "impressions_count": {
+              "title": "Impressions Count",
+              "type": "integer"
+            },
+            "clicks_count": {
+              "title": "Clicks Count",
+              "type": "integer"
+            },
+            "spent_impressions": {
+              "title": "Spent Impressions",
+              "type": "number"
+            },
+            "spent_clicks": {
+              "title": "Spent Clicks",
+              "type": "number"
+            }
+          },
+          "required": [
+            "impressions_count",
+            "clicks_count",
+            "spent_impressions",
+            "spent_clicks"
+          ],
+          "title": "CampaignStat",
+          "type": "object"
+        },
+        "AdvertiserCampaignStat": {
+          "properties": {
+            "impressions_count": {
+              "title": "Impressions Count",
+              "type": "integer"
+            },
+            "clicks_count": {
+              "title": "Clicks Count",
+              "type": "integer"
+            },
+            "spent_impressions": {
+              "title": "Spent Impressions",
+              "type": "number"
+            },
+            "spent_clicks": {
+              "title": "Spent Clicks",
+              "type": "number"
+            }
+          },
+          "required": [
+            "impressions_count",
+            "clicks_count",
+            "spent_impressions",
+            "spent_clicks"
+          ],
+          "title": "AdvertiserCampaignStat",
+          "type": "object"
+        },
+        "CampaignStatDaily": {
+          "properties": {
+            "impressions_count": {
+              "title": "Impressions Count",
+              "type": "integer"
+            },
+            "clicks_count": {
+              "title": "Clicks Count",
+              "type": "integer"
+            },
+            "spent_impressions": {
+              "title": "Spent Impressions",
+              "type": "number"
+            },
+            "spent_clicks": {
+              "title": "Spent Clicks",
+              "type": "number"
+            },
+            "date": {
+              "title": "Date",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "impressions_count",
+            "clicks_count",
+            "spent_impressions",
+            "spent_clicks",
+            "date"
+          ],
+          "title": "CampaignStatDaily",
+          "type": "object"
+        },
+        "CurrentDay": {
+          "properties": {
+            "current_date": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Current Date",
+              "type": "integer"
+            }
+          },
+          "title": "CurrentDay",
+          "type": "object"
+        }
+      }
+    },
+    "servers": []
+  }
